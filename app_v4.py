@@ -67,6 +67,12 @@ next_order_no = f"YM{order_count+1:03d}"
 
 st.title("🍜 YO MOMO POS")
 
+if st.button("DELETE TEST ORDERS"):
+    cursor.execute("DELETE FROM order_items")
+    cursor.execute("DELETE FROM orders")
+    conn.commit()
+    st.success("All orders deleted")
+    
 tab1, tab2, tab3, tab4, tab5 = st.tabs(
     ["New Order","Active Orders","Completed Orders","Reports","Menu"]
 )
